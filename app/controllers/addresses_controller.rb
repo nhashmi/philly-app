@@ -54,7 +54,7 @@ class AddressesController < ApplicationController
     end
 
     def address_params
-      params.require(:address).permit(:street_address)
+      params.require(:address).permit(:street_address, :unit)
     end
 
 end

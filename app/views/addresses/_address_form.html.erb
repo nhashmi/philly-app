@@ -1,6 +1,7 @@
 <%= form_for [current_user, @address] do |f| %> 
 
-  Your address: <%= f.text_field :street_address %>
+  Your address: <%= f.text_field :street_address, :placeholder => '1234 Market St.' %>
+  Unit: <%= f.text_field :unit, :placeholder => "301 (optional)" %> 
   <%= f.submit %>  
 
 <% end %> 

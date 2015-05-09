@@ -3,6 +3,7 @@ class CreateAddresses < ActiveRecord::Migration
     create_table :addresses do |t|
       t.belongs_to :user
       t.string :street_address, :null => false
+      t.string :unit
       t.timestamps null: false
     end
   end
