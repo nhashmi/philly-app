@@ -10,6 +10,7 @@ FactoryGirl.define do
 
   factory :address do 
     street_address "1234 Market St."
+    user
   end
 
 end

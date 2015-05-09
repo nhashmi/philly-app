@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+# Use pry for debugging
+
+gem 'pry'
+
 # Use RSpec for testing
 group :development, :test do
   gem 'rspec-rails'

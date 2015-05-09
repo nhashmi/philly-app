@@ -1,6 +1,6 @@
 <h1>Your addresses</h1>
 <ul>
   <% @addresses.each do |address| %> 
-    <li><%= address.street_address %></li>
+    <li><%= link_to address.street_address, user_address_path( current_user, address ) %></li>
   <% end %> 
 </ul>

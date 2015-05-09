@@ -1,0 +1,6 @@
+<%= form_for [current_user, @address] do |f| %> 
+
+  Your address: <%= f.text_field :street_address %>
+  <%= f.submit %>  
+
+<% end %> 

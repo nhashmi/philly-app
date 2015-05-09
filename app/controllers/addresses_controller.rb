@@ -12,44 +12,49 @@ class AddressesController < ApplicationController
   end
 
   def new
-    @address = Address.new
+    if current_user.addresses.length == 0
+      @welcome_message = "Thanks for signing up! Now add an address below."
+    else
+      @welcome_message = "Add an address"
+    end
+    @address = current_user.addresses.new
   end
 
   def create
     @address = current_user.addresses.new(address_params)
     if @address.save
-      redirect_to @address
+      redirect_to user_address_url(current_user, @address)
     else
       render :new
     end
   end
 
   def edit 
+    @welcome_message = "Update an address"
   end
 
   def update
-    if @address.update
-      redirect_to @address
+    if @address.update(address_params)
+      redirect_to user_address_url(current_user, @address)
     else
       render :edit
+    end
   end
 
   def destroy
     @address.destroy
-    redirect_to addresses_path
+    redirect_to user_addresses_path
   end
 
 
   private
 
     def find_address
-      @address = Address.find(params[:id])
+      @address = current_user.addresses.find(params[:id])
     end
 
     def address_params
       params.require(:address).permit(:street_address)
     end
-
-  end
 
 end
