@@ -1,8 +1,13 @@
 source 'https://rubygems.org'
 
+# Use RSpec for testing
 group :development, :test do
   gem 'rspec-rails'
 end
+
+# Set up factory_girl
+gem 'factory_girl_rails', '~> 4.0'
+gem 'faker'
 
 gem 'devise'
 

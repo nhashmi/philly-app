@@ -22,5 +22,10 @@ module Phillyhousing
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Set up factory_girl 
+    config.generators do |g|
+      g.factory_girl dir: 'spec/factories'
+    end
   end
 end
