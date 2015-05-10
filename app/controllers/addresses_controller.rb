@@ -1,3 +1,5 @@
+require 'uri'
+
 class AddressesController < ApplicationController
 
   # before any of the below address actions happen, the user will be authenticated
@@ -9,14 +11,20 @@ class AddressesController < ApplicationController
   end
 
   def show
+    # respond_to do |format|
+    #   format.js.erb {render :layout=>false}
+    # end
+    @address_encoded = URI.encode(@address.street_address).chomp(".")
+    @unit_encoded = URI.encode(@address.unit)
   end
 
   def new
-    if current_user.addresses.length == 0
-      @welcome_message = "Thanks for signing up! Now add an address below."
-    else
-      @welcome_message = "Add an address"
-    end
+    # if current_user.addresses.length == 0
+    #   @welcome_message = "Thanks for signing up! Now add an address below."
+    # else
+    #   @welcome_message = "Add an address"
+    # end
+    @welcome_message = welcome_message
     @address = current_user.addresses.new
   end
 

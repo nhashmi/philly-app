@@ -1,6 +1,10 @@
 <h1><%= "#{@address.street_address}, Unit #{@address.unit}" %></h1>
 <h2>Property information</h2>
-<h2>Crime information</h2>
+<%= content_tag "div", class: "housing-data", data: {streetAddress: @address.street_address, unit: @address.unit} do %>
+<% end %>  
+<!-- <div class="housing-data"></div> -->
+<h2>Recent 311 calls in your neighborhood</h2>
+<!-- Save 311 calls by id and show bookmarked ones by resolution -->
 <h3>Your notes</h3>
 <!-- Link to edit -->
 <p><%= link_to "Edit this address", edit_user_address_path( current_user, @address)%></p>
