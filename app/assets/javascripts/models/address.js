@@ -2,7 +2,7 @@ var Address = function() {
   console.log("Starting the Address constructor function")
   this.propertyId;
   console.log("Getting the property ID")
-  this.getPropertyId();
+  this.getPropertyData();
   this.getOpen311();
   console.log("The property ID is: " + this.propertyId)
   console.log("Finished the Address constructor function")
@@ -10,10 +10,11 @@ var Address = function() {
 
 Address.prototype = {
 
-  getPropertyId: function(callback) {
-    console.log("Inside getPropertyId")
+  getPropertyData: function(callback) {
+    console.log("Inside getPropertyData");
     var streetAddress = $('.housing-data').data('streetaddress');
-    var unit = $('.housing-data').data('unit')
+    var unit = $('.housing-data').data('unit');
+    console.log("URL: " + "http://api.phila.gov/opa/v1.1/address/" + encodeURIComponent(streetAddress) + "/" + encodeURIComponent(unit) + "?format=json")
     $.ajax({
       type: 'GET',
       dataType: 'json',
@@ -21,9 +22,10 @@ Address.prototype = {
     }).done(function(response) {
       console.log("Successfully completed the ajax call. Now loading the property id");
       console.log("The response was: " + response);
+      console.dir(response)
       addressModel.loadPropertyData(response);
       console.log("Now rendering")
-      // addressView.render();
+      addressView.render();
     }).fail(function(response) {
       console.log("Could not retreive address")
       console.log("Now rendering a failed attempt")
@@ -46,8 +48,7 @@ Address.prototype = {
     $.ajax({
       type: 'GET',
       dataType: 'json',
-      // url: "http://www.publicstuff.com/api/open311/requests.json?jurisdiction_id=philadelphia-pa&lat=" + encodeURIComponent(this.latitude) + "&long=" + encodeURIComponent(this.longitude)
-      url: "http://www.publicstuff.com/api/open311/requests.json?jurisdiction_id=philadelphia-pa&zipcode=" + encodeURIComponent(this.zipcode)
+      url : "https://www.publicstuff.com/api/2.0/requests_list?client_id=242&client_requests=1&limit=100&lat=" + encodeURIComponent(this.latitude) + "&lon=" + encodeURIComponent(this.longitude)
     }).done(function(response) {
       console.dir(response);
       addressModel.load311Data(response);
@@ -55,18 +56,27 @@ Address.prototype = {
       addressView.render();
     }).fail(function(response) {
       console.log("Could not retreive 311 calls");
+      addressView.renderFailure();
     })
   }, 
 
   load311Data: function(response) {
     console.log("Inside the load311Data method");
     this.serviceRequests = [];
-    b = response
-    for (var i = 0; i < response.length; i++) {
-      var serviceRequest = response[i];
-      this.serviceRequests.push(serviceRequest);
+    var allRequests = response.response.requests
+    // var inZipCode = 0;
+    // var searchRadius = 0.025; 
+    for (var i = 0; i < allRequests.length; i++) {
+      // if (allRequests[i] === undefined) {continue;}
+      var serviceRequest = allRequests[i].request //.request;
+      console.dir(serviceRequest);
+      // if (serviceRequest.lat > this.latitude - searchRadius && serviceRequest.lat < this.latitude + searchRadius && serviceRequest.lon > this.longitude - searchRadius && serviceRequest.lon < this.longitude + searchRadius){
+        this.serviceRequests.push(serviceRequest);
+        // inZipCode++;
+      // }
     }
     console.dir(this.serviceRequests)
+    a = this.serviceRequests
   }
 
 }

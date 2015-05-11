@@ -14,12 +14,18 @@ AddressView.prototype = {
   render: function(){
     console.log("Inside the render function")
     console.log(this.housingData);
-    this.housingData.innerHTML = "Property ID: " + this.model.propertyId;
+    // this.housingData.innerHTML = "Property ID: " + this.model.propertyId;
     console.log("Now console.dir this.model.serviceRequests")
     console.dir(this.model.serviceRequests)
     console.log("this.model.serviceRequests.length = " + this.model.serviceRequests.length);
-    for (var i = 0; i < this.model.serviceRequests.length; i++) {
-      $(this.open311Data).append("<li>" + this.model.serviceRequests[i].address + ": " + this.model.serviceRequests[i].description + "</li>")
+    var requestsRendered = 0
+    for (var i = 0; i < this.model.serviceRequests.length && requestsRendered < 20; i++) {
+      var unix_timestamp = this.model.serviceRequests[i].date_created
+      console.log("Unix time: " + unix_timestamp)
+      var dateCreated = new Date(unix_timestamp * 1000);
+      $(this.open311Data).append("<li>" + dateCreated + "&mdash;" + this.model.serviceRequests[i].address + ": " + this.model.serviceRequests[i].description + "</li>");
+      $(this.open311Data).append("<img src=" + this.model.serviceRequests[i].image_thumbnail + ">")
+      requestsRendered++ 
     };
   },
 
