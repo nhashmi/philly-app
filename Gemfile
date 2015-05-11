@@ -1,7 +1,11 @@
 source 'https://rubygems.org'
 
-# Use pry for debugging
+# Use Refills (Bourbon + Neat) for styles
+gem 'bourbon'
+gem 'neat'
+gem 'refills'
 
+# Use pry for debugging
 gem 'pry'
 
 # Use RSpec for testing

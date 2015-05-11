@@ -1,4 +1,4 @@
-require 'uri'
+require 'pry'
 
 class AddressesController < ApplicationController
 
@@ -17,12 +17,11 @@ class AddressesController < ApplicationController
   end
 
   def new
-    # if current_user.addresses.length == 0
-    #   @welcome_message = "Thanks for signing up! Now add an address below."
-    # else
-    #   @welcome_message = "Add an address"
-    # end
-    @welcome_message = welcome_message
+    if current_user.addresses.length == 0
+      @welcome_message = "Thanks for signing up! Now add an address below."
+    else
+      @welcome_message = "Add an address"
+    end
     @address = current_user.addresses.new
   end
 
