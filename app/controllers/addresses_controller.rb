@@ -12,10 +12,8 @@ class AddressesController < ApplicationController
 
   def show
     # respond_to do |format|
-    #   format.js.erb {render :layout=>false}
+    #   format.js {render :layout=>false}
     # end
-    @address_encoded = URI.encode(@address.street_address).chomp(".")
-    @unit_encoded = URI.encode(@address.unit)
   end
 
   def new
