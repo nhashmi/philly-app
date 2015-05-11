@@ -23,8 +23,33 @@ AddressView.prototype = {
       var unix_timestamp = this.model.serviceRequests[i].date_created
       console.log("Unix time: " + unix_timestamp)
       var dateCreated = new Date(unix_timestamp * 1000);
-      $(this.open311Data).append("<li>" + dateCreated + "&mdash;" + this.model.serviceRequests[i].address + ": " + this.model.serviceRequests[i].description + "</li>");
-      $(this.open311Data).append("<img src=" + this.model.serviceRequests[i].image_thumbnail + ">")
+      // Add info to card
+        // <div class="card">
+        $(this.open311Data).append('<div class="card card' + requestsRendered + '"></div>');
+        // Default image
+        if (this.model.serviceRequests[i].image_thumbnail === "") {this.model.serviceRequests[i].image_thumbnail = "https://c3.staticflickr.com/3/2160/2457815776_38b3a10fa8_b.jpg"};
+        $(".card" + requestsRendered).append('<div class="card-image"><img src="' + this.model.serviceRequests[i].image_thumbnail + '" alt="Photo of service request"></div>');
+          // <div class="card-image">
+          //   <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains-3.png" alt="">
+          // </div>
+        $(".card" + requestsRendered).append('<div class="card-header">' + this.model.serviceRequests[i].title + '</div>');
+          // <div class="card-header">
+          //   The Last Card
+          // </div>
+        // Default description 
+        if (this.model.serviceRequests[i].description === "") { this.model.serviceRequests[i].description = "No description provided." }
+        $(".card" + requestsRendered).append('<div class="card-copy"><p>' + this.model.serviceRequests[i].description + '</p></div>');
+          // <div class="card-copy">
+          //   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          // </div>
+        // </div>
+      // </div>
+
+
+
+
+      // $(this.open311Data).append("<li>" + dateCreated + "&mdash;" + this.model.serviceRequests[i].address + ": " + this.model.serviceRequests[i].description + "</li>");
+      // $(this.open311Data).append("<img src=" + this.model.serviceRequests[i].image_thumbnail + ">")
       requestsRendered++ 
     };
   },
