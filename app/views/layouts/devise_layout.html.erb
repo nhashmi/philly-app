@@ -4,7 +4,8 @@
   <title>Philly 311 Monitor</title>
   <link href='http://fonts.googleapis.com/css?family=Archivo+Black' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'devise_layout', media: 'all', 'data-turbolinks-track' => true %>
+  <!-- Change below if you use any custom js for devise layouts -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -12,11 +13,8 @@
 <header>
   <h1><%= link_to "Philly 311 Monitor", root_path %></h1>
 </header>
-<%= yield %>
-<footer>
-  <% if current_user %> 
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% end %> 
-</footer>
+<div class="devise-container">
+  <%= yield %>
+</div>
 </body>
 </html>

@@ -1,0 +1,136 @@
+@import "bourbon";
+@import "neat";
+@import "normalize";
+
+// Theme colors 
+$phillies-red: #CA1F2C;
+$phillies-blue: #226AA9;
+
+// Fonts
+$header-font-stack: 'Archivo Black', sans-serif;
+$main-font-stack: 'Droid Sans', sans-serif;
+
+html { 
+  background: url("flickr_user_fordan_skyline.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  text-align: center;
+  font-family: $main-font-stack;
+}
+
+a {
+  color: $phillies-red;
+  text-decoration: none;
+  font-size: 2em;
+}
+
+a:visited{
+  color: $phillies-red;
+  text-decoration: none;
+}
+
+header{
+  text-align: center;
+  color: #fff;
+  font-family: $header-font-stack
+}
+
+h1 {
+
+  a{
+    text-decoration: none;
+    color: #fff;
+  }
+
+  a:visited{
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+h2{
+  font-family: $header-font-stack;
+  text-align: center;
+  font-size: 4em;
+  color: $phillies-red;
+  margin: 0 0 1em 0;
+}
+
+.devise-container{
+
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 10px solid $phillies-blue;
+  border-radius: 10px; 
+  padding: 1em;
+
+  input[type=submit] {
+    padding: 0.7em 2em;
+    background: $phillies-blue;
+    color: #fff;
+    font-size: 2em;
+    font-weight: 500;
+    border: 3px solid darken($phillies-blue, 20%);
+    border-radius: 5px;
+    margin: 1em 0 1em 0;
+  }
+
+  label {
+    font-size: 1.5em;
+    color: $phillies-blue;
+  }
+
+  input[type=email],
+  input[type=password] {
+    background-color: darken($phillies-blue, 20%);
+    border: 3px solid darken($phillies-blue, 40%);
+    border-radius: 5px;
+    font-size: 1.5em;
+    padding: 1em;
+    color: #fff;
+  }
+
+  input[type=email]:focus,
+  input[type=password]:focus {
+    border: 10px solid #fff;
+    border-radius: 5px;
+  }
+
+  input[type=submit]:hover{
+    background: #fff;
+    border: 3px solid $phillies-blue;
+    color: $phillies-blue;
+  }
+
+  a {
+    color: $phillies-blue;
+  }
+
+}
+
+
+
+// input[type=text] {padding:5px; border:2px solid #ccc; 
+// -webkit-border-radius: 5px;
+// border-radius: 5px;
+// }
+// input[type=text]:focus {border-color:#333; }
+
+// input[type=submit] {padding:5px 15px; background:#ccc; border:0 none;
+// cursor:pointer;
+// -webkit-border-radius: 5px;
+// border-radius: 5px; }
+
+
+// button {
+//       @include button(flat, $action-color);
+//       padding: 0.7em 1em;
+//     }
+
+
+
+
+
+
+
