@@ -22,34 +22,23 @@ AddressView.prototype = {
     for (var i = 0; i < this.model.serviceRequests.length && requestsRendered < 20; i++) {
       var unix_timestamp = this.model.serviceRequests[i].date_created
       console.log("Unix time: " + unix_timestamp)
-      var dateCreated = new Date(unix_timestamp * 1000);
+      var dateCreated = new Date(unix_timestamp * 1000); // moment.js will do this, but keeping it in for clarity
+      var dateString = moment(dateCreated).calendar()
       // Add info to card
-        // <div class="card">
         $(this.open311Data).append('<div class="card card' + requestsRendered + '"></div>');
         // Default image
         if (this.model.serviceRequests[i].image_thumbnail === "") {this.model.serviceRequests[i].image_thumbnail = "https://c3.staticflickr.com/3/2160/2457815776_38b3a10fa8_b.jpg"};
-        $(".card" + requestsRendered).append('<div class="card-image"><img src="' + this.model.serviceRequests[i].image_thumbnail + '" alt="Photo of service request"></div>');
-          // <div class="card-image">
-          //   <img src="https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains-3.png" alt="">
-          // </div>
-        $(".card" + requestsRendered).append('<div class="card-header">' + this.model.serviceRequests[i].title + '</div>');
-          // <div class="card-header">
-          //   The Last Card
-          // </div>
-        // Default description 
+        $(".card" + requestsRendered).append('<div class="card-image"><div class="ribbon-box"><img src="' + this.model.serviceRequests[i].image_thumbnail + '" alt="Photo of service request"><div class="ribbon-wrapper"><div class="ribbon">' + this.model.serviceRequests[i].status + '</div></div></div></div>');
+        if (this.model.serviceRequests[i].status === "in progress") {$(".ribbon").last().css("background-color", "#FACF08")};
+        $(".card" + requestsRendered).append('<div class="card-header"> ' + dateString + ' one of your neighbors reported: ' + this.model.serviceRequests[i].title + '</div>');
         if (this.model.serviceRequests[i].description === "") { this.model.serviceRequests[i].description = "No description provided." }
-        $(".card" + requestsRendered).append('<div class="card-copy"><p>' + this.model.serviceRequests[i].description + '</p></div>');
-          // <div class="card-copy">
-          //   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          // </div>
-        // </div>
-      // </div>
-
-
-
-
-      // $(this.open311Data).append("<li>" + dateCreated + "&mdash;" + this.model.serviceRequests[i].address + ": " + this.model.serviceRequests[i].description + "</li>");
-      // $(this.open311Data).append("<img src=" + this.model.serviceRequests[i].image_thumbnail + ">")
+        $(".card" + requestsRendered).append('<div class="card-copy">' + 
+            '<p>' + 
+              this.model.serviceRequests[i].description + 
+            '</p>' + 
+            '<button id="get-in-touch">Get in touch</button>' + 
+            '<button id="track-request">Track request</button>' + 
+          '</div>');
       requestsRendered++ 
     };
   },

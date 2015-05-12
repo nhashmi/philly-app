@@ -6,4 +6,6 @@ $(document).ready(function(){
   console.log("Creating a new AddressView")
   addressView = new AddressView(addressModel);
   console.log("Created a new AddressView")
-})
+  
+});
+
