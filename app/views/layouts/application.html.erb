@@ -2,13 +2,21 @@
 <html>
 <head>
   <title>Phillyhousing</title>
+  <link href='http://fonts.googleapis.com/css?family=Archivo+Black' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<header>
+  <h1><%= link_to "Philly 311 Monitor", root_path %></h1>
+</header>
 <%= yield %>
-<footer><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></footer>
+<footer>
+  <% if current_user %> 
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% end %> 
+</footer>
 </body>
 </html>

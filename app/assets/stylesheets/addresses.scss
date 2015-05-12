@@ -2,10 +2,91 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 // Theme colors 
 $phillies-red: #CA1F2C;
 $phillies-blue: #226AA9;
 
+// Fonts 
+$header-font-stack: 'Archivo Black', sans-serif;
+$main-font-stack: 'Droid Sans', sans-serif;
+
+header{
+  text-align: center;
+  color: #fff;
+  font-family: $header-font-stack
+}
+
+h1 {
+  a{
+    text-decoration: none;
+    color: #fff;
+  }
+
+  a:visited{
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+$parallax-window-height: 30em;
+$parallax-background-height: $parallax-window-height * 2;
+
+.parallax-window {
+  margin-top: 1em;
+  padding: 10em 0 50em 0;
+  max-height: $parallax-window-height;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+  h1 {
+    font-size: 5em;
+    margin: 0;
+    background-color: rgba(239, 0, 0, 0.75);
+    font-family: $header-font-stack 
+  }
+
+  
+}
+
+.parallax-static-content {
+  // color: #9A9A8A;
+  color: #fff;
+  // padding: 8em 0;
+  padding: 8em 0;
+  position: relative;
+  z-index: 9;
+}
+
+.parallax-background {
+  background: url("city_hall.jpg") repeat;
+  background-position: top;
+  // background-position: 50% 50%;
+  // height: 100%;
+  // min-height: 100%;
+  background-size: cover;
+  background-color: $phillies-blue;
+  height: $parallax-background-height;
+  left: 0;
+  position: absolute;
+  top: - $parallax-window-height / 3;
+  width: 100%;
+}
+
+// Based on http://codepen.io/skeurentjes/
+
+body{
+  @include background(linear-gradient($phillies-blue, lighten($phillies-blue, 20%)) left repeat);
+
+}
+
+h2{
+    text-align: center;
+    font-size: 3em;
+    color: #fff;
+  }
 
 .hero {  
   $base-border-radius: 3px !default;
@@ -70,6 +151,10 @@ $phillies-blue: #226AA9;
   }
 }
 
+.open311-data{
+  text-align: center;
+}
+
 .cards {
   @include display(flex);
   @include flex-wrap(wrap);
@@ -79,8 +164,9 @@ $phillies-blue: #226AA9;
 
 .card {
   $base-border-color: gainsboro !default;
-  $base-border-radius: 3px !default;
-  $base-background-color: white !default;
+  $base-border-radius: 5px !default;
+  // $base-background-color: white !default;
+  $base-background-color: #f2f2f2 !default;
   $base-spacing: 1.5em !default;
   $action-color: #477DCA !default;
   $base-link-color: $action-color !default;
@@ -220,10 +306,80 @@ button{
   background-color: $phillies-red;
 }
 
+#get-in-touch:hover{
+  background-color: #fff;
+  color: $phillies-red;
+  border: 2px solid $phillies-red;
+}
+
 #track-request {
   float: right;
   margin: 0 1em 0.5em 1em;
   background-color: $phillies-blue;
 }
+
+#track-request:hover{
+  background-color: #fff;
+  color: $phillies-blue;
+  border: 2px solid $phillies-blue;
+}
+
+// Edit and delete address actions
+
+.address-tools {
+  width: 100%;
+  color: #fff;
+  font-size: 2em;
+  text-align: center;
+}
+
+.list-centered {
+    list-style: none;
+    padding: 1em;
+
+    ul{
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    a{
+      text-decoration: none;
+    }
+
+    a:visited{
+      color: #fff;
+    }
+
+    li {
+        display: inline-block;
+        margin: 0 1em 1em 0;
+    }
+
+}
+
+// Footer
+
+footer {
+
+  font-size: 1.5em;
+  color: #fff; 
+  text-align: right;
+  padding: 0 2em 2em 0;
+  a{
+    text-decoration: none;
+  }
+
+  a:hover{
+    color: $phillies-red;
+  }
+
+  a:visited{
+    color: #fff;
+  }
+
+
+}
+
+
 
 
