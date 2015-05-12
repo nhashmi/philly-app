@@ -12,12 +12,14 @@
 <!-- <h2>Property information</h2> -->
 <!-- <%= content_tag "div", class: "housing-data", data: {streetAddress: @address.street_address, unit: @address.unit} do %> -->
 <% end %>  
-<h2>Recent 311 calls in your neighborhood</h2>
-<div class="open311-data">
-</div>
-<div class="address-tools">
-  <ul class="list-centered">
-    <li><%= link_to "Edit address", edit_user_address_path( current_user, @address)%></li>
-    <li><%= link_to "Delete address", user_address_path( current_user, @address), method: :delete %></li>  
-  </ul>
+<div class="show-container">
+  <h2>Recent 311 calls in your neighborhood</h2>
+  <div class="open311-data">
+  </div>
+  <div class="address-tools">
+    <ul class="list-centered">
+      <li><%= link_to "Edit address", edit_user_address_path( current_user, @address)%></li>
+      <li><%= link_to "Delete address", user_address_path( current_user, @address), method: :delete %></li>  
+    </ul>
+  </div>  
 </div>

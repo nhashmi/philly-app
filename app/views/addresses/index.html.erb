@@ -1,6 +1,9 @@
-<h1>Your addresses</h1>
-<ul>
-  <% @addresses.each do |address| %> 
-    <li><%= link_to address.street_address, user_address_path( current_user, address ) %></li>
-  <% end %> 
-</ul>
+<div class="address-container">
+  <h2>Your addresses</h2>
+  <ul>
+    <% @addresses.each do |address| %> 
+      <li><%= link_to address.street_address, user_address_path( current_user, address ) %></li>
+    <% end %> 
+  </ul>
+  <button id="new-address"><%= link_to "Add another address", new_user_address_path( current_user ) %></button>
+</div>
