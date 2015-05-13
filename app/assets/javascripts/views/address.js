@@ -2,7 +2,9 @@ var AddressView = function(addressModel){
   console.log("Inside the AddressView constructor function");
   this.housingData = document.querySelector(".housing-data");
   this.open311Data = document.querySelector(".open311-data");
+  this.specificRequestData = document.querySelector(".specific-request");
   console.log("this.housingData is " + this.housingData);
+  console.dir(this.specificRequestData);
   this.model = addressModel;
   console.log("this.model is" + this.model);
   console.log("rendering...")
@@ -72,5 +74,26 @@ AddressView.prototype = {
   renderFailure: function(){
     console.log("inside the render failure function")
     this.housingData.innerHTML = "API could not find address";
+  },
+
+  renderServiceRequest: function(){
+    console.log("Inside the renderServiceRequest function")
+    console.log(this.specificRequestData);
+    console.dir(this.model.specificRequest);
+    var request = this.model.specificRequest;
+    $(".specific-request").prepend('<h3>' + request.title + ' at ' + request.address + '.</h3><h3>' + moment(request.date_created * 1000).calendar() + '<h3>');
+    $(".specific-request").append('<h4>Status: ' + request.request_status + '</h4>');
+    if (request.image === "") {
+      $(".specific-request").append('<p>The neighbor who submitted this service request did not submit a photo.</p>')
+    } else {
+      $(".specific-request").append('<img src="' + request.image + '" alt="Photo associated with service request">');  
+    }
+    $(".specific-request").append('<h4>Description</h4><p>' + request.description + '</p>');
+  },
+
+  renderServiceRequestFailure: function(){
+    console.log("inside the render failure function")
+    this.specificRequestData.innerHTML = "API could not find address";
   }
+
 }

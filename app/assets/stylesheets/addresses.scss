@@ -408,7 +408,7 @@ button{
   color: #fff;
   font-size: 2em;
   text-align: center;
-  margin-bottom: 2em;
+  // margin-bottom: 2em;
 
   h3 {
 
@@ -425,6 +425,7 @@ button{
     }
 
     padding-bottom: 1em;
+    margin-bottom: 0;
 
   }
 
@@ -460,10 +461,10 @@ button{
 
 footer {
 
-  font-size: 1.5em;
+  font-size: 1em;
   color: #fff; 
   text-align: right;
-  padding: 1em 2em 1em 0;
+  padding: 0.5em 1.5em 0.5em 0;
   background: darken($phillies-blue, 10%);
   position: fixed;
   bottom: 0;
@@ -639,3 +640,51 @@ footer {
   display: none;
 }
 
+.specific-request {
+
+  img {
+    border: 8px solid #fff;
+    border-radius: 5px; 
+  }
+
+}
+
+#request-update-note a,
+#request-untrack a,
+#request-update-note a:visited,
+#request-untrack a:visited {
+  text-decoration: none;
+  color: #fff;
+}
+
+#request-update-note button {
+  background-color: $phillies-blue;
+}
+
+
+#request-update-note button:hover {
+  border: 2px solid $phillies-blue;
+  background-color: lighten($phillies-blue, 20%);
+}
+
+#request-update-note a:hover {
+  background-color: lighten($phillies-blue, 20%);
+}
+
+#request-untrack button {
+  background-color: $phillies-red;
+}
+
+#request-untrack button:hover {
+  border: 2px solid $phillies-red;
+  background-color: lighten($phillies-red, 20%);
+}
+
+#request-untrack a:hover {
+  background-color: lighten($phillies-red, 20%);
+}
+
+.hero .hero-request {
+  padding-top: 2em;
+  font-size: 2em;
+}

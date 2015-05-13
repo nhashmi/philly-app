@@ -1,23 +1,27 @@
-$(document).ready(function(){
-  console.log("The document is ready")
-  console.log("Creating a new Address")
-  addressModel = new Address();
-  console.log("Created a new Address")
-  console.log("Creating a new AddressView")
-  addressView = new AddressView(addressModel);
-  console.log("Created a new AddressView")
+var ready;
+ready = function() {
 
-  if ($("#js-parallax-window").length) {
-    parallax();
-  }
-  
-});
+    console.log("The document is ready")
+    console.log("Creating a new Address")
+    addressModel = new Address();
+    console.log("Created a new Address")
+    console.log("Creating a new AddressView")
+    addressView = new AddressView(addressModel);
+    console.log("Created a new AddressView")
 
-$(window).scroll(function(e) {
-  if ($("#js-parallax-window").length) {
-    parallax();
-  }
-});
+    if ($("#js-parallax-window").length) {
+      parallax();
+    }
+
+  $(window).scroll(function(e) {
+    if ($("#js-parallax-window").length) {
+      parallax();
+    }
+  });
+}
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
 
 function parallax(){
   if( $("#js-parallax-window").length > 0 ) {

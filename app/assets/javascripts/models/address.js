@@ -2,10 +2,15 @@ var Address = function() {
   console.log("Starting the Address constructor function")
   this.propertyId;
   console.log("Getting the property ID")
-  this.getPropertyData();
-  this.getOpen311();
-  console.log("The property ID is: " + this.propertyId)
-  console.log("Finished the Address constructor function")
+  if (window.location.pathname.includes('addresses')){
+    this.getPropertyData();
+    this.getOpen311();
+  }
+  if (window.location.pathname.includes('requests')){
+    this.getServiceRequest();  
+  }
+  console.log("The property ID is: " + this.propertyId);
+  console.log("Finished the Address constructor function");
 }
 
 Address.prototype = {
@@ -72,6 +77,36 @@ Address.prototype = {
       // if (serviceRequest.lat > this.latitude - searchRadius && serviceRequest.lat < this.latitude + searchRadius && serviceRequest.lon > this.longitude - searchRadius && serviceRequest.lon < this.longitude + searchRadius){
         this.serviceRequests.push(serviceRequest);
     }
+  },
+
+  getServiceRequest: function(callback) {
+    console.log("Inside getServiceRequest");
+    var requestClasses = $(".specific-request")
+    console.dir(requestClasses)
+    requestClass = $(requestClasses)[0].classList[1]
+    console.dir(requestClass)
+    regexpId = /[0-9]+/;
+    var requestId = requestClass.match(regexpId);
+    console.log("The requestId is " + requestId);
+    $.ajax({
+      type: 'GET',
+      dataType: 'json',
+      url: "https://www.publicstuff.com/api/2.0/request_view?return_type=json&request_id=" + requestId 
+    }).done(function(response) {
+      console.dir(response);
+      addressModel.loadServiceRequest(response);
+      console.log("Now rendering")
+      addressView.renderServiceRequest();
+    }).fail(function(response) {
+      console.log("Could not retreive this 311 service request.");
+      addressView.renderServiceRequestFailure();
+    })
+  }, 
+
+  loadServiceRequest: function(response) {
+    console.log("Inside the loadServiceRequest method");
+    this.specificRequest = response.response
+    console.dir(this.specificRequest);
   }
 
 }

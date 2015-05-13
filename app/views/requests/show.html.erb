@@ -1,16 +1,17 @@
 <!-- // Make ajax request to get specific service id 
 // Link on addresses show to request id 
 // Link on this page back to all requests --> 
-<div class="hero">
+<div class="hero hero-request">
   <div class="hero-inner">
     <div class="hero-copy">
       <h2>Service request <%= @request.service_id %></h2>  
-      <div class=<%="specific-request request#{@request.service_id}"%>>
+      <div class="<%="specific-request request#{@request.service_id}"%>">
       </div>
       <div class="notes">
-        <p>Notes: <%= @request.notes %></p>
-        <button id="update-note"><%= link_to "Update note", edit_user_request_path( current_user, request )%></button>
-        <button id="untrack"><%= link_to "Untrack", user_request_path( current_user, request), method: :delete %></button>
+        <h4>Notes</h4>
+        <p><%= @request.notes %></p>
+        <span id="request-update-note"><button id="update-note"><%= link_to "Update note", edit_user_request_path( current_user, @request )%></button></span>
+        <span id="request-untrack"><button id="untrack"><%= link_to "Untrack", user_request_path( current_user, @request), method: :delete %></button></span>
       </div>
     </div>
   </div>
