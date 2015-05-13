@@ -6,6 +6,7 @@
 // Theme colors 
 $phillies-red: #CA1F2C;
 $phillies-blue: #226AA9;
+$phl-flag-yellow: #FACF08;
 
 // Fonts 
 $header-font-stack: 'Archivo Black', sans-serif;
@@ -387,7 +388,14 @@ button{
   background-color: $phillies-blue;
 }
 
-#track-request:hover{
+#track-request:hover {
+  background-color: #fff;
+  color: $phillies-blue;
+  border: 2px solid $phillies-blue;
+}
+
+#tracked {
+  float: right;
   background-color: #fff;
   color: $phillies-blue;
   border: 2px solid $phillies-blue;
@@ -401,6 +409,25 @@ button{
   font-size: 2em;
   text-align: center;
   margin-bottom: 2em;
+
+  h3 {
+
+    font-family: $header-font-stack;
+    color: $phl-flag-yellow;
+
+    a{
+      text-decoration: none;
+      color: $phl-flag-yellow;
+    }
+
+    a:visited{
+      color: $phl-flag-yellow;
+    }
+
+    padding-bottom: 1em;
+
+  }
+
 }
 
 .list-centered {
@@ -457,7 +484,103 @@ footer {
 
 }
 
-.address-container{
+.request-container {
+  background: url("flickr_user_fordan_skyline.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  text-align: center;
+  font-family: $main-font-stack;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+  } 
+
+  li {
+      font-size: 1.5em;
+    }
+
+  li a:hover {
+    color: lighten($phillies-blue, 20%);
+  }
+
+  h2 {
+    font-family: $header-font-stack;
+    font-size: 2.75em;
+    color: $phl-flag-yellow;
+  }
+
+  div {
+    background-color: rgba(0, 0, 0, 0.85);
+    padding-bottom: 5em;
+  }
+
+  .notes {
+    border: 2px solid $phl-flag-yellow;
+    width: 45%;
+    margin: 1em auto;
+    color: #fff;
+    background-color: #333;
+    padding: 1em 1em 1.5em 1em;
+
+    p {
+      text-align: left;
+      font-size: 1.25em;
+      margin: 1em;
+    }
+
+    #untrack {
+      background-color: $phillies-red;
+      margin-left: 1em;
+    }
+
+    #untrack:hover {
+      background-color: #fff;
+      border: 2px solid $phillies-red;
+    }
+
+    #untrack a:hover{
+      color: $phillies-red;
+    }
+
+    #update-note {
+      background-color: $phillies-blue;
+      margin-right: 1em;
+    }
+
+    #update-note:hover {
+      background-color: #fff;
+      border: 2px solid $phillies-blue;
+    }
+
+    #update-note a:hover {
+      color: $phillies-blue;
+    }
+
+  }
+
+  a,
+  a:visited {
+    text-decoration: none;
+    // font-size: 1.5em;
+    color: #fff;
+  }
+
+
+}
+
+.edit_request {
+
+  textarea {
+    width: 100%;
+    background-color: #333;
+    padding: 1em;
+  }
+}
+
+.address-container {
   text-align: center;
 
   h1 {

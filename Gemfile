@@ -11,6 +11,8 @@ gem 'pry'
 # Use RSpec for testing
 group :development, :test do
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 # Set up factory_girl

@@ -22,13 +22,6 @@ class RequestsController < ApplicationController
     @request = current_user.requests.new(request_params)
     @request.save
     render :nothing => true, :status => 200, :content_type => 'text/html'
-    # respond_to do |format| 
-    #   if @request.save
-    #     redirect_to user_request_url(current_user, @request)
-    #   else
-    #     render :new
-    #   end
-    # end
   end
 
   def edit
@@ -44,7 +37,7 @@ class RequestsController < ApplicationController
 
   def destroy
     @request.destroy
-    render :nothing => true, :status => 200, :content_type => 'text/html'
+    redirect_to user_requests_path
   end
 
   private

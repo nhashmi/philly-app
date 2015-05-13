@@ -1,12 +1,8 @@
-require 'rails/all'
-require 'rspec/rails'
-require 'devise'
-require 'support/controller_macros'
 
 RSpec.configure do |config|
 
-  config.include Devise::TestHelpers, :type => :controller
-  config.extend ControllerMacros, :type => :controller
+  # config.include Devise::TestHelpers, :type => :controller
+  # config.extend ControllerMacros, :type => :controller
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

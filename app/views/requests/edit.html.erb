@@ -1,0 +1,13 @@
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <h2>Your notes on service request <%= @request.service_id %></h2>  
+    </div>
+    <%= form_for [current_user, @request] do |f| %> 
+
+      <%= f.text_area :notes, size: "40x10", class: 'write-note' %> 
+      <%= f.submit %>  
+
+    <% end %> 
+  </div>
+</div>

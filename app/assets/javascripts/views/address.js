@@ -42,33 +42,28 @@ AddressView.prototype = {
               this.model.serviceRequests[i].description + 
             '</p>' + 
             '<button id="get-in-touch">Get in touch</button>' + 
-            '<a href="/users/' + userId + '/requests/new"><button id="track-request">Track request</button></a>' + 
+            '<button id="track-request">Track request</button>' + 
           '</div>');
         $(".card" + requestsRendered + " #track-request").append('<div class="hidden-service-id">' + this.model.serviceRequests[i].id + '</div>'); 
-        $(".card" + requestsRendered + " #track-request").on('click', function(evt){
+        $(".card" + requestsRendered).find(":button").on('click', function(evt){
           evt.preventDefault();
           console.log("inside track request");
           console.log("This service request ID is: ");
           console.log(this.children[0].innerText);
           var serviceRequestId = this.children[0].innerText;
+          // Track a request
+          var nowTracking = $.post("/users/" + userId + "/requests", {request: {service_id: serviceRequestId, notes: ""}});
 
-          var tracking = $.post("/users/" + userId + "/requests", {request: {service_id: serviceRequestId, notes: ""}});
-          tracking.done(function(){
-            alert("saved!")
-            // Add tracked class
-            // In addresses.scss, change style if it becomes tracked successfully
-            // Change text to 'untrack'
-          })
+          $(this).attr("id", "tracked");
+          // this.removeAttribute("id");
+          this.innerText = "Tracked";
 
-          tracking.fail(function(){
+          nowTracking.fail(function(){
             alert("We're sorry, but service request #" + serviceRequestId + "could not be tracked at this time.");
           })
 
-          // make AJAX delete request to untrack a service request
-
-
         });
-
+          
        requestsRendered++ 
 
     };

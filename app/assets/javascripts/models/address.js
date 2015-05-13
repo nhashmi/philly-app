@@ -18,7 +18,7 @@ Address.prototype = {
     $.ajax({
       type: 'GET',
       dataType: 'json',
-      url: "https://api.phila.gov/opa/v1.1/address/" + encodeURIComponent(streetAddress) + "/" + encodeURIComponent(unit) + "?format=json"
+      url: "http://api.phila.gov/opa/v1.1/address/" + encodeURIComponent(streetAddress) + "/" + encodeURIComponent(unit) + "?format=json"
     }).done(function(response) {
       console.log("Successfully completed the ajax call. Now loading the property id");
       console.log("The response was: " + response);
@@ -64,7 +64,6 @@ Address.prototype = {
     console.log("Inside the load311Data method");
     this.serviceRequests = [];
     var allRequests = response.response.requests
-    // var inZipCode = 0;
     // var searchRadius = 0.025; 
     for (var i = 0; i < allRequests.length; i++) {
       // if (allRequests[i] === undefined) {continue;}
@@ -72,11 +71,7 @@ Address.prototype = {
       console.dir(serviceRequest);
       // if (serviceRequest.lat > this.latitude - searchRadius && serviceRequest.lat < this.latitude + searchRadius && serviceRequest.lon > this.longitude - searchRadius && serviceRequest.lon < this.longitude + searchRadius){
         this.serviceRequests.push(serviceRequest);
-        // inZipCode++;
-      // }
     }
-    console.dir(this.serviceRequests)
-    a = this.serviceRequests
   }
 
 }

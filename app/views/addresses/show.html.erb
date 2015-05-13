@@ -21,5 +21,6 @@
       <li><%= link_to "Edit address", edit_user_address_path( current_user, @address)%></li>
       <li><%= link_to "Delete address", user_address_path( current_user, @address), method: :delete %></li>  
     </ul>
+    <h3><%= link_to "View my tracked requests", user_requests_path( current_user )%></h3>
   </div>  
 </div>
