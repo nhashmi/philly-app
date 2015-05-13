@@ -32,16 +32,45 @@ AddressView.prototype = {
         $(".card" + requestsRendered).append('<div class="card-image"><div class="ribbon-box"><img src="' + this.model.serviceRequests[i].image_thumbnail + '" alt="Photo of service request"><div class="ribbon-wrapper"><div class="ribbon">' + this.model.serviceRequests[i].status + '</div></div></div></div>');
         if (this.model.serviceRequests[i].status === "in progress") {$(".ribbon").last().css("background-color", "#FACF08")};
         if (this.model.serviceRequests[i].status === "completed") {$(".ribbon").last().css("background-color", "#009E60")};
-        $(".card" + requestsRendered).append('<div class="card-header"> ' + dateString + ' one of your neighbors reported: ' + this.model.serviceRequests[i].title + '</div>');
+        $(".card" + requestsRendered).append('<div class="card-header">' + dateString + ' one of your neighbors reported: ' + this.model.serviceRequests[i].title + '</div>');
         if (this.model.serviceRequests[i].description === "") { this.model.serviceRequests[i].description = "No description provided." }
+        // Get the user's id from the url 
+        var pathArray = window.location.pathname.split('/');
+        var userId = pathArray[2];
         $(".card" + requestsRendered).append('<div class="card-copy">' + 
             '<p>' + 
               this.model.serviceRequests[i].description + 
             '</p>' + 
             '<button id="get-in-touch">Get in touch</button>' + 
-            '<button id="track-request">Track request</button>' + 
+            '<a href="/users/' + userId + '/requests/new"><button id="track-request">Track request</button></a>' + 
           '</div>');
-      requestsRendered++ 
+        $(".card" + requestsRendered + " #track-request").append('<div class="hidden-service-id">' + this.model.serviceRequests[i].id + '</div>'); 
+        $(".card" + requestsRendered + " #track-request").on('click', function(evt){
+          evt.preventDefault();
+          console.log("inside track request");
+          console.log("This service request ID is: ");
+          console.log(this.children[0].innerText);
+          var serviceRequestId = this.children[0].innerText;
+
+          var tracking = $.post("/users/" + userId + "/requests", {request: {service_id: serviceRequestId, notes: ""}});
+          tracking.done(function(){
+            alert("saved!")
+            // Add tracked class
+            // In addresses.scss, change style if it becomes tracked successfully
+            // Change text to 'untrack'
+          })
+
+          tracking.fail(function(){
+            alert("We're sorry, but service request #" + serviceRequestId + "could not be tracked at this time.");
+          })
+
+          // make AJAX delete request to untrack a service request
+
+
+        });
+
+       requestsRendered++ 
+
     };
   },
 

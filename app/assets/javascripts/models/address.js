@@ -18,7 +18,7 @@ Address.prototype = {
     $.ajax({
       type: 'GET',
       dataType: 'json',
-      url: "http://api.phila.gov/opa/v1.1/address/" + encodeURIComponent(streetAddress) + "/" + encodeURIComponent(unit) + "?format=json"
+      url: "https://api.phila.gov/opa/v1.1/address/" + encodeURIComponent(streetAddress) + "/" + encodeURIComponent(unit) + "?format=json"
     }).done(function(response) {
       console.log("Successfully completed the ajax call. Now loading the property id");
       console.log("The response was: " + response);

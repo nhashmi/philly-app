@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   has_many :addresses
+  has_many :requests
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
