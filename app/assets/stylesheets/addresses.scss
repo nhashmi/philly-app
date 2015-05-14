@@ -470,18 +470,15 @@ footer {
   bottom: 0;
   width: 100%;
 
-  a{
+  a, 
+  a:visited {
     text-decoration: none;
+    color: #fff;
   }
 
   a:hover{
     color: $phillies-red;
   }
-
-  a:visited{
-    color: #fff;
-  }
-
 
 }
 
