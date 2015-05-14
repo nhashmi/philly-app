@@ -14,6 +14,7 @@ var AddressView = function(addressModel){
 AddressView.prototype = {
 
   render: function(){
+    $(".card").detach();
     console.log("Inside the render function")
     console.log(this.housingData);
     // this.housingData.innerHTML = "Property ID: " + this.model.propertyId;
