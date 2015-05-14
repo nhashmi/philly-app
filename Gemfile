@@ -7,6 +7,9 @@ gem 'refills'
 
 gem 'figaro'
 
+# Use high voltage for static pages
+gem 'high_voltage'
+
 # Use pry for debugging
 gem 'pry'
 

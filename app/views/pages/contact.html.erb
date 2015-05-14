@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Philly 311 Monitor</title>
+  <link href='https://fonts.googleapis.com/css?family=Archivo+Black' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="contact">
+<!-- <header>
+  <h1><%= link_to "Philly 311 Monitor", root_path %></h1>
+</header> -->
+  <h2>Get in touch</h2>
+  <p>Want to get in touch with the proper authorities about a specific service request or about 311 services in general? Contact the appropriate office below:</p>
+  <ul>
+    <li><a href="https://www.phillypolice.com/districts/index.html">Police</a></li>
+    <li><a href="http://www.phila.gov/qualityoflife/Pages/default.aspx">Neighborhood Services</a></li>
+    <li><a href="http://www.philadelphiastreets.com/customer-service/">Streets</a></li>
+    <li><a href="http://www.phila.gov/li/Pages/default.aspx">Licenses and Insepctions</a></li>
+    <li><a href="http://www.phila.gov/parksandrecreation/Pages/default.aspx">Parks and Recreation</a></li>
+  </ul> 
+  <h3>About this site</h3>
+  <p>This site was made by <a href="http://nabil.io">Nabil Hashmi</a> and is not associated with the City of Philadelphia's 311 services. To contribute to this project, please submit an issue or fork <a href="https://github.com/nhashmi/philly-311-monitor">the project repository</a> on GitHub.</p>
+<footer>
+  <a href="http://nabil.io" id="signature">nabil.io</a>
+  <% if current_user %> 
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% end %> 
+</footer>
+</body>
+</html>

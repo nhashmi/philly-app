@@ -43,7 +43,7 @@ AddressView.prototype = {
             '<p>' + 
               this.model.serviceRequests[i].description + 
             '</p>' + 
-            '<button id="get-in-touch">Get in touch</button>' + 
+            '<a href="/contact" id="get-in-touch">Get in touch</a>' + 
             '<button id="track-request">Track request</button>' + 
           '</div>');
         $(".card" + requestsRendered + " #track-request").append('<div class="hidden-service-id">' + this.model.serviceRequests[i].id + '</div>'); 

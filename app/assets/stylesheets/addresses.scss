@@ -371,13 +371,20 @@ button{
 }
 
 #get-in-touch{
+  @include button(flat);
+  padding: 0.7em 1em;
   float: left;
   margin: 0 1em 0.5em 1em;
   background-color: $phillies-red;
+  text-decoration: none;
+
+}
+
+#get-in-touch:hover:not(:disabled) {
+  background-color: #fff;
 }
 
 #get-in-touch:hover{
-  background-color: #fff;
   color: $phillies-red;
   border: 2px solid $phillies-red;
 }
@@ -685,3 +692,69 @@ footer {
   padding-top: 2em;
   font-size: 2em;
 }
+
+#signature {
+  float: left;
+  padding-left: 1em;
+}
+
+// Contact page 
+
+.contact {
+
+  h2 {
+    font-family: $header-font-stack;
+    font-size: 5em;
+    color: lighten($phillies-red, 20%);
+    background-color: #fff;
+    padding-top: 0em;
+  }
+
+  h3,
+  p {
+    margin: 1em;
+    text-align: center;
+    color: #fff;
+  }
+
+  p {
+    font-size: 1.7em;
+    line-height: 1.5em;
+  }
+
+  h3 {
+    font-size: 2em;
+    font-family: $header-font-stack;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  ul a {
+    text-decoration: none;
+    color: #fff;
+    @include button(flat);
+    padding: 0.7em 1em;
+    margin: 1em;
+    background-color: lighten($phillies-red, 20%);
+  }  
+
+  p a,
+  p a:visited {
+    text-decoration: none;
+    color: darken($phillies-red, 20%);
+  }
+
+
+
+}
+
+
+
