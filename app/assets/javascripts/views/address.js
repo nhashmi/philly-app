@@ -30,7 +30,7 @@ AddressView.prototype = {
         $(this.open311Data).append('<div class="card card' + requestsRendered + '"></div>');
         // Default image
         // if (this.model.serviceRequests[i].image_thumbnail === "") {this.model.serviceRequests[i].image_thumbnail = "https://c3.staticflickr.com/3/2160/2457815776_38b3a10fa8_b.jpg"};
-        if (this.model.serviceRequests[i].image_thumbnail === "") {this.model.serviceRequests[i].image_thumbnail = "http://cupcake.nilssonlee.se/wp-content/uploads/2015/02/IMG_9851.jpg"};
+        if (this.model.serviceRequests[i].image_thumbnail === "") {this.model.serviceRequests[i].image_thumbnail = "https://cupcake.nilssonlee.se/wp-content/uploads/2015/02/IMG_9851.jpg"};
         $(".card" + requestsRendered).append('<div class="card-image"><div class="ribbon-box"><img src="' + this.model.serviceRequests[i].image_thumbnail + '" alt="Photo of service request"><div class="ribbon-wrapper"><div class="ribbon">' + this.model.serviceRequests[i].status + '</div></div></div></div>');
         if (this.model.serviceRequests[i].status === "in progress") {$(".ribbon").last().css("background-color", "#FACF08")};
         if (this.model.serviceRequests[i].status === "completed") {$(".ribbon").last().css("background-color", "#009E60")};
