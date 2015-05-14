@@ -41,8 +41,8 @@ Address.prototype = {
   loadPropertyData: function(response) {
     console.log("Inside the loadPropertyData method");
     this.propertyId = response.data.properties[0].property_id;
-    this.longitude = response.data.properties[0].geometry.x;
-    this.latitude = response.data.properties[0].geometry.y;
+    // this.longitude = response.data.properties[0].geometry.x;
+    // this.latitude = response.data.properties[0].geometry.y;
     this.zipcode = response.data.properties[0].zip.slice(0,5)
     console.dir(this);
     console.log("this's propertyId is" + this.propertyId);
@@ -53,7 +53,7 @@ Address.prototype = {
     $.ajax({
       type: 'GET',
       dataType: 'json',
-      url : "https://www.publicstuff.com/api/2.0/requests_list?client_id=242&client_requests=1&limit=100&lat=" + encodeURIComponent(this.latitude) + "&lon=" + encodeURIComponent(this.longitude)
+      url : "https://www.publicstuff.com/api/2.0/requests_list?client_id=242&client_requests=1&limit=400&lat=" + encodeURIComponent(this.latitude) + "&lon=" + encodeURIComponent(this.longitude)
     }).done(function(response) {
       console.dir(response);
       addressModel.load311Data(response);

@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Use geocoder for address latitude and longitude
+gem 'geocoder'
+
 # Use Refills (Bourbon + Neat) for styles
 gem 'bourbon'
 gem 'neat'

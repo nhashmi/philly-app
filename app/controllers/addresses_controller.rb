@@ -1,4 +1,5 @@
 require 'pry'
+require 'geocoder'
 
 class AddressesController < ApplicationController
 
@@ -28,6 +29,10 @@ class AddressesController < ApplicationController
   def create
     @address = current_user.addresses.new(address_params)
     if @address.save
+      coordinates = Geocoder.coordinates(@address.street_address + ", Philadelphia, PA")
+      @address.latitude = coordinates[0]
+      @address.longitude = coordinates[1]
+      @address.save
       redirect_to user_address_url(current_user, @address)
     else
       render :new
