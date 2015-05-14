@@ -5,6 +5,8 @@ gem 'bourbon'
 gem 'neat'
 gem 'refills'
 
+gem 'figaro'
+
 # Use pry for debugging
 gem 'pry'
 

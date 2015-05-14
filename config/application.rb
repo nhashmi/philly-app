@@ -27,5 +27,8 @@ module Phillyhousing
     config.generators do |g|
       g.factory_girl dir: 'spec/factories'
     end
+
+    config.serve_static_assets = true
+    
   end
 end

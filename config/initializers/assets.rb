@@ -9,6 +9,9 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.compile = true
-Rails.application.config.assets.precompile =  ['*.js', '*.css',] 
+
 # Rails.application.config.assets.precompile += %w( devise_layout.css )
+
+
+# Rails.application.config.assets.compile = true
+# Rails.application.config.assets.precompile =  ['*.js', '*.css',] 
