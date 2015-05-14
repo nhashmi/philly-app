@@ -25,14 +25,14 @@ AddressView.prototype = {
     var latitude = $('.housing-data').data('latitude');
     var longitude = $('.housing-data').data('longitude');
     for (var i = 0; i < this.model.serviceRequests.length && requestsRendered < 20; i++) {
-      console.log("LAT AND LONG")
-      console.dir(this.model.serviceRequests[i])
+      // console.log("LAT AND LONG")
+      // console.dir(this.model.serviceRequests[i])
       if (this.model.serviceRequests[i].lat < (latitude + searchRadius) &&
           this.model.serviceRequests[i].lat > (latitude - searchRadius) && 
           this.model.serviceRequests[i].lon < (longitude + searchRadius) && 
           this.model.serviceRequests[i].lon > (longitude - searchRadius)) {
         var unix_timestamp = this.model.serviceRequests[i].date_created
-        console.log("Unix time: " + unix_timestamp)
+        // console.log("Unix time: " + unix_timestamp)
         var dateCreated = new Date(unix_timestamp * 1000); // moment.js will do this, but keeping it in for clarity
         var dateString = moment(dateCreated).calendar()
         // Add info to card
@@ -40,27 +40,30 @@ AddressView.prototype = {
           // Default image
           // if (this.model.serviceRequests[i].image_thumbnail === "") {this.model.serviceRequests[i].image_thumbnail = "https://c3.staticflickr.com/3/2160/2457815776_38b3a10fa8_b.jpg"};
           if (this.model.serviceRequests[i].image_thumbnail === "") {this.model.serviceRequests[i].image_thumbnail = "https://s169923.gridserver.com/images/whiteplanks.jpg"};
-          $(".card" + requestsRendered).append('<div class="card-image"><div class="ribbon-box"><img src="' + this.model.serviceRequests[i].image_thumbnail + '" alt="Photo of service request"><div class="ribbon-wrapper"><div class="ribbon">' + this.model.serviceRequests[i].status + '</div></div></div></div>');
-          if (this.model.serviceRequests[i].status === "in progress") {$(".ribbon").last().css("background-color", "#FACF08")};
-          if (this.model.serviceRequests[i].status === "completed") {$(".ribbon").last().css("background-color", "#009E60")};
-          $(".card" + requestsRendered).append('<div class="card-header">' + dateString + ' one of your neighbors reported: ' + this.model.serviceRequests[i].title + '</div>');
-          if (this.model.serviceRequests[i].description === "") { this.model.serviceRequests[i].description = "No description provided." }
-          // Get the user's id from the url 
-          var pathArray = window.location.pathname.split('/');
-          var userId = pathArray[2];
-          $(".card" + requestsRendered).append('<div class="card-copy">' + 
-              '<p>' + 
-                this.model.serviceRequests[i].description + 
-              '</p>' + 
-              '<a href="/contact" id="get-in-touch">Get in touch</a>' + 
-              '<button id="track-request">Track request</button>' + 
-            '</div>');
-          $(".card" + requestsRendered + " #track-request").append('<div class="hidden-service-id">' + this.model.serviceRequests[i].id + '</div>'); 
+          if(!$(".card" + requestsRendered)){
+            $(".card" + requestsRendered).append('<div class="card-image"><div class="ribbon-box"><img src="' + this.model.serviceRequests[i].image_thumbnail + '" alt="Photo of service request"><div class="ribbon-wrapper"><div class="ribbon">' + this.model.serviceRequests[i].status + '</div></div></div></div>');
+            if (this.model.serviceRequests[i].status === "in progress") {$(".ribbon").last().css("background-color", "#FACF08")};
+            if (this.model.serviceRequests[i].status === "completed") {$(".ribbon").last().css("background-color", "#009E60")};
+            $(".card" + requestsRendered).append('<div class="card-header">' + dateString + ' one of your neighbors reported: ' + this.model.serviceRequests[i].title + '</div>');
+            if (this.model.serviceRequests[i].description === "") { this.model.serviceRequests[i].description = "No description provided." }
+            // Get the user's id from the url 
+            var pathArray = window.location.pathname.split('/');
+            var userId = pathArray[2];
+            $(".card" + requestsRendered).append('<div class="card-copy">' + 
+                '<p>' + 
+                  this.model.serviceRequests[i].description + 
+                '</p>' + 
+                '<a href="/contact" id="get-in-touch">Get in touch</a>' + 
+                '<button id="track-request">Track request</button>' + 
+              '</div>');
+            $(".card" + requestsRendered + " #track-request").append('<div class="hidden-service-id">' + this.model.serviceRequests[i].id + '</div>');
+          }
+           
           $(".card" + requestsRendered).find(":button").on('click', function(evt){
             evt.preventDefault();
-            console.log("inside track request");
-            console.log("This service request ID is: ");
-            console.log(this.children[0].innerText);
+            // console.log("inside track request");
+            // console.log("This service request ID is: ");
+            // console.log(this.children[0].innerText);
             var serviceRequestId = this.children[0].innerText;
             // Track a request
             var nowTracking = $.post("/users/" + userId + "/requests", {request: {service_id: serviceRequestId, notes: ""}});
