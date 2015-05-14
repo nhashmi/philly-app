@@ -31,6 +31,8 @@ AddressView.prototype = {
           this.model.serviceRequests[i].lat > (latitude - searchRadius) && 
           this.model.serviceRequests[i].lon < (longitude + searchRadius) && 
           this.model.serviceRequests[i].lon > (longitude - searchRadius)) {
+        // jQuery("#main_class:not(:has(.new_class))").append('<span class="new_class">hello</span>');
+        // $(".open311-data"):not(:has(".card" + requestsRendered)
         var unix_timestamp = this.model.serviceRequests[i].date_created
         // console.log("Unix time: " + unix_timestamp)
         var dateCreated = new Date(unix_timestamp * 1000); // moment.js will do this, but keeping it in for clarity
@@ -40,25 +42,22 @@ AddressView.prototype = {
           // Default image
           // if (this.model.serviceRequests[i].image_thumbnail === "") {this.model.serviceRequests[i].image_thumbnail = "https://c3.staticflickr.com/3/2160/2457815776_38b3a10fa8_b.jpg"};
           if (this.model.serviceRequests[i].image_thumbnail === "") {this.model.serviceRequests[i].image_thumbnail = "https://s169923.gridserver.com/images/whiteplanks.jpg"};
-          if(!$(".card" + requestsRendered)){
-            $(".card" + requestsRendered).append('<div class="card-image"><div class="ribbon-box"><img src="' + this.model.serviceRequests[i].image_thumbnail + '" alt="Photo of service request"><div class="ribbon-wrapper"><div class="ribbon">' + this.model.serviceRequests[i].status + '</div></div></div></div>');
-            if (this.model.serviceRequests[i].status === "in progress") {$(".ribbon").last().css("background-color", "#FACF08")};
-            if (this.model.serviceRequests[i].status === "completed") {$(".ribbon").last().css("background-color", "#009E60")};
-            $(".card" + requestsRendered).append('<div class="card-header">' + dateString + ' one of your neighbors reported: ' + this.model.serviceRequests[i].title + '</div>');
-            if (this.model.serviceRequests[i].description === "") { this.model.serviceRequests[i].description = "No description provided." }
-            // Get the user's id from the url 
-            var pathArray = window.location.pathname.split('/');
-            var userId = pathArray[2];
-            $(".card" + requestsRendered).append('<div class="card-copy">' + 
-                '<p>' + 
-                  this.model.serviceRequests[i].description + 
-                '</p>' + 
-                '<a href="/contact" id="get-in-touch">Get in touch</a>' + 
-                '<button id="track-request">Track request</button>' + 
-              '</div>');
-            $(".card" + requestsRendered + " #track-request").append('<div class="hidden-service-id">' + this.model.serviceRequests[i].id + '</div>');
-          }
-           
+          $(".card" + requestsRendered).append('<div class="card-image"><div class="ribbon-box"><img src="' + this.model.serviceRequests[i].image_thumbnail + '" alt="Photo of service request"><div class="ribbon-wrapper"><div class="ribbon">' + this.model.serviceRequests[i].status + '</div></div></div></div>');
+          if (this.model.serviceRequests[i].status === "in progress") {$(".ribbon").last().css("background-color", "#FACF08")};
+          if (this.model.serviceRequests[i].status === "completed") {$(".ribbon").last().css("background-color", "#009E60")};
+          $(".card" + requestsRendered).append('<div class="card-header">' + dateString + ' one of your neighbors reported: ' + this.model.serviceRequests[i].title + '</div>');
+          if (this.model.serviceRequests[i].description === "") { this.model.serviceRequests[i].description = "No description provided." }
+          // Get the user's id from the url 
+          var pathArray = window.location.pathname.split('/');
+          var userId = pathArray[2];
+          $(".card" + requestsRendered).append('<div class="card-copy">' + 
+              '<p>' + 
+                this.model.serviceRequests[i].description + 
+              '</p>' + 
+              '<a href="/contact" id="get-in-touch">Get in touch</a>' + 
+              '<button id="track-request">Track request</button>' + 
+            '</div>');
+          $(".card" + requestsRendered + " #track-request").append('<div class="hidden-service-id">' + this.model.serviceRequests[i].id + '</div>'); 
           $(".card" + requestsRendered).find(":button").on('click', function(evt){
             evt.preventDefault();
             // console.log("inside track request");
