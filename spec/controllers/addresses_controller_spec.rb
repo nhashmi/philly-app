@@ -33,30 +33,4 @@ RSpec.describe AddressesController, type: :controller do
       end
     end
   end
-
-  describe "editing an address" do 
-
-    let(:different_attributes) do 
-      { :street_address => '101 new address', :user => user}
-    end
-
-    before(:each) do 
-      put :update, { 
-        :user_id => user, 
-        # :id => address.id, 
-        :address => different_attributes
-      }
-      @address.reload
-    end
-
-    it "redirects to the updated address" do 
-      expect(response).to redirect_to(@address)
-    end
-
-    it "updates the address" do 
-      expect(@address.street_address).to eql different_attributes[:street_address]
-    end
-
-  end
-
 end
