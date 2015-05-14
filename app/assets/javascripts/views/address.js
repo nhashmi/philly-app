@@ -61,7 +61,7 @@ AddressView.prototype = {
           this.innerText = "Tracked";
 
           nowTracking.fail(function(){
-            alert("We're sorry, but service request #" + serviceRequestId + "could not be tracked at this time.");
+            alert("We're sorry, but service request #" + serviceRequestId + " could not be tracked at this time.");
           })
 
         });
