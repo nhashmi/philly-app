@@ -46,7 +46,15 @@ AddressView.prototype = {
           $(".card" + requestsRendered).append('<div class="card-image"><div class="ribbon-box"><img src="' + this.model.serviceRequests[i].image_thumbnail + '" alt="Photo of service request (if it exists). Wood photo courtesy of Jay Mantri."><div class="ribbon-wrapper"><div class="ribbon">' + this.model.serviceRequests[i].status + '</div></div></div></div>');
           if (this.model.serviceRequests[i].status === "in progress") {$(".ribbon").last().css("background-color", "#FACF08")};
           if (this.model.serviceRequests[i].status === "completed") {$(".ribbon").last().css("background-color", "#009E60")};
-          $(".card" + requestsRendered).append('<div class="card-header">' + dateString + ' one of your neighbors reported: ' + this.model.serviceRequests[i].title + '</div>');
+          var longAddress = this.model.serviceRequests[i].address;
+          console.log('Long address is' + longAddress)
+          var shortAddressRegex = longAddress.match(/.(?= Philadelphia, PA)/);
+          if (shortAddressRegex) {
+            var requestLocation = longAddress.slice(0, shortAddressRegex.index);  
+          } else {
+            var requestLocation = longAddress;
+          }
+          $(".card" + requestsRendered).append('<div class="card-header">' + dateString + ' one of your neighbors reported: ' + this.model.serviceRequests[i].title + ' at ' + requestLocation + '</div>');
           if (this.model.serviceRequests[i].description === "") { this.model.serviceRequests[i].description = "No description provided." }
           // Get the user's id from the url 
           var pathArray = window.location.pathname.split('/');
