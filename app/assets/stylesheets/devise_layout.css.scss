@@ -1,3 +1,4 @@
+// Import Refills and normalize.css
 @import "bourbon";
 @import "neat";
 @import "normalize";
@@ -11,6 +12,7 @@ $header-font-stack: 'Archivo Black', sans-serif;
 $main-font-stack: 'Droid Sans', sans-serif;
 
 html { 
+  // Full-page background-image
   background: url("flickr_user_fordan_skyline.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -108,29 +110,3 @@ h2{
   }
 
 }
-
-
-
-// input[type=text] {padding:5px; border:2px solid #ccc; 
-// -webkit-border-radius: 5px;
-// border-radius: 5px;
-// }
-// input[type=text]:focus {border-color:#333; }
-
-// input[type=submit] {padding:5px 15px; background:#ccc; border:0 none;
-// cursor:pointer;
-// -webkit-border-radius: 5px;
-// border-radius: 5px; }
-
-
-// button {
-//       @include button(flat, $action-color);
-//       padding: 0.7em 1em;
-//     }
-
-
-
-
-
-
-

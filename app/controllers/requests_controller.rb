@@ -21,6 +21,7 @@ class RequestsController < ApplicationController
   def create
     @request = current_user.requests.new(request_params)
     @request.save
+    # Allow create from AJAX post request and don't refresh page
     render :nothing => true, :status => 200, :content_type => 'text/html'
   end
 

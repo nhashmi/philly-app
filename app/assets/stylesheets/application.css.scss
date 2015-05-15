@@ -10,7 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- * Removed require_tree .
+ * Removed require_tree . so that devise layout would not include address stylesheet
  *
  *= require_self
  */

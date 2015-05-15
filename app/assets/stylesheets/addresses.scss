@@ -52,6 +52,10 @@ h1 {
 $parallax-window-height: 30em;
 $parallax-background-height: $parallax-window-height * 2;
 
+// *******************
+//   Parallax Window
+// *******************
+
 .parallax-window {
   margin-top: 1em;
   padding: 10em 0 50em 0;
@@ -72,9 +76,7 @@ $parallax-background-height: $parallax-window-height * 2;
 }
 
 .parallax-static-content {
-  // color: #9A9A8A;
   color: #fff;
-  // padding: 8em 0;
   padding: 8em 0;
   position: relative;
   z-index: 9;
@@ -83,9 +85,6 @@ $parallax-background-height: $parallax-window-height * 2;
 .parallax-background {
   background: url("city_hall.jpg") repeat;
   background-position: top;
-  // background-position: 50% 50%;
-  // height: 100%;
-  // min-height: 100%;
   background-size: cover;
   background-color: $phillies-blue;
   height: $parallax-background-height;
@@ -97,11 +96,6 @@ $parallax-background-height: $parallax-window-height * 2;
 
 // Based on http://codepen.io/skeurentjes/
 
-// body{
-//   @include background(linear-gradient($phillies-blue, lighten($phillies-blue, 20%)) left no-repeat);
-
-// }
-
 h2{
     margin-top: 0;
     padding-top: 1em;
@@ -110,27 +104,26 @@ h2{
     color: #fff;
   }
 
+// ****************************
+//   Hero image on show page
+// ****************************
+
 .hero {  
   $base-border-radius: 3px !default;
-  // $action-color: #477DCA !default;
   $action-color: #115AAC !default;
   $large-screen: em(860) !default;
-  // $hero-background-top: #7F99BE; 
   $hero-background-top: #000; 
-  // $hero-background-bottom: #20392B;
   $hero-background-bottom: #000;
   $hero-color: white;
   font-size: 1.5em;
   $gradient-angle: 10deg;
   $hero-image: "city_hall.jpg";
 
-  // @include background(url($hero-image), linear-gradient($gradient-angle, $hero-background-bottom, $hero-background-top), no-repeat $hero-background-top scroll);
   @include background(linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url($hero-image));
   background-color: #324766;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  // background-size: 100% 100%;
   padding-bottom: 3em;
 
   .hero-logo img {
@@ -221,7 +214,11 @@ h2{
   }
 }
 
-.open311-data{
+// *************************
+//   Service request cards 
+// *************************
+
+.open311-data {
   text-align: center;
 }
 
@@ -235,7 +232,6 @@ h2{
 .card {
   $base-border-color: gainsboro !default;
   $base-border-radius: 5px !default;
-  // $base-background-color: white !default;
   $base-background-color: #f2f2f2 !default;
   $base-spacing: 1.5em !default;
   $action-color: #477DCA !default;
@@ -488,6 +484,11 @@ footer {
   }
 
 }
+
+// ********************
+//   Tracked requests
+// ********************
+
 
 .request-container {
   background: url("flickr_user_fordan_skyline.jpg") no-repeat center center fixed; 
