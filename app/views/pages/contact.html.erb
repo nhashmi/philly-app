@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title>Philly 311 Monitor</title>
@@ -7,11 +7,9 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-</head>
+</head> -->
 <body class="contact">
-<!-- <header>
-  <h1><%= link_to "Philly 311 Monitor", root_path %></h1>
-</header> -->
+  <div class="contact-wrapper">
   <h2>Get in touch</h2>
   <p>Want to get in touch with the proper authorities about a specific service request or about 311 services in general? Contact the appropriate office below:</p>
   <ul>
@@ -23,11 +21,7 @@
   </ul> 
   <h3>About this site</h3>
   <p>This site was made by <a href="http://nabil.io">Nabil Hashmi</a> and is not associated with the City of Philadelphia's 311 services. To contribute to this project, please submit an issue or fork <a href="https://github.com/nhashmi/philly-311-monitor">the project repository</a> on GitHub.</p>
-<footer>
-  <a href="http://nabil.io" id="signature">nabil.io</a>
-  <% if current_user %> 
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% end %> 
-</footer>
+  <p class="photo-credits"><a href="https://www.flickr.com/photos/michaelrighi/2457815776/in/photolist-4KbX15-dpzeTH-7CLYiR-dmHyXj-gS4Ltj-6CFEEW-mn4Qyg-boYZPA-5YuPCg-jMQX4x-i1mdfv-ajHV5i-5m8LtA-cgHmbL-ny4WAj-7Z5eLM-2LD2Ey-dGZZ5E-2EzcNS-dHLXNE-7g3XAJ-iNrUuk-2Aa8gP-skS3YA-m7Jrjx-o8Hdv1-8vmeqC-81YV2w-mYGk1o-bbLvQ2-dmnXCg-pMkfGs-dzMwy4-bwauce-dJuMyG-ihywGQ-nKTsja-nLqE8s-octY7j-do5czr-pMkp7d-oraxb1-jgm6oz-qXhdLA-dZL9ZC-eTRq9V-5wfcyi-e6yk3t-dQEHwT-qNKMb9">The photograph of City Hall</a> used on this site was taken by Michael Righi, and <a href="https://www.flickr.com/photos/fordan/3696917154/in/photolist-6CFEEW-6SDQQa-7hWcF5-8goK32-f4LAub-6bx74a-oarw7U-MrqA-7ob9mq-f2iuma-8Sa4qi-5eMmDK-8ut8EW-8UJLE3-o5URja-csUtt1-7E4jCF-aLDCQD-cqv3QC-5i8pZa-dRSNqM-o9bfVB-6L7Jm6-qzCzxE-aSzioe-dz9qqm-bmD7f2-6RAbbC-4cqQpx-7CLYiR-7YSJ5d-7LpQhh-qAepVQ-6LiiJQ-7LjE2U-pRg7Ur-bBSekM-pctzyE-cjAyYu-92dmza-7i7Bxa-3KsjTA-n3B177-9moUut-7tjecd-rpnZsj-oHbnyu-7rYeaJ-3oRcEX-oYbp3K">the photo of the skyline</a> was taken by Bob Snyder. Both of these photos are used here under a Creative Commons 2.0 license.</p>
+  </div>
 </body>
 </html>

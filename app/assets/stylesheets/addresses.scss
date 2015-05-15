@@ -702,6 +702,10 @@ footer {
 
 .contact {
 
+  body {
+    height: 100%;
+  }
+
   h2 {
     font-family: $header-font-stack;
     font-size: 5em;
@@ -752,9 +756,20 @@ footer {
     color: darken($phillies-red, 20%);
   }
 
+  .photo-credits a,
+  .photo-credits a:visited {
+   color: #fff; 
+  }
+
+  .photo-credits a:hover {
+    color: darken($phillies-red, 20%);
+  }
 
 
 }
 
-
+.contact-wrapper {
+  @include background(linear-gradient($phillies-blue, lighten($phillies-blue, 20%)) left no-repeat);
+  padding-bottom: 2em;
+}
 
