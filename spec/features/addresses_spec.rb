@@ -22,27 +22,21 @@ describe "Addresses", js: true do
     end
   end
 
-  # Clicking add a new address shows address form 
   it "shows the new address form when the user clicks 'add a new address' button" do 
     visit "/"
     login_as(@user)
     click_link("Add another address")
-    fill_in('street_address', :with => '2000 Spring Garden St.')
-    fill_in('unit', :with => '100')
-    click_button('Submit')
-    expect(page).to have_content('2000 Spring Garden St.')
+    expect(page).to have_content('Unit')
   end 
 
-  # Creating a new address takes user back to addresses#index and 
-  # includes new address 
-
-
-  # Clicking track request creates a new request that belongs to the user 
-
-
-  # Clicking sign out takes the user to the sign in page
-
-
-
+  it "includes the new address after a user submits the 'Create Address' form" do 
+    visit "/"
+    login_as(@user)
+    click_link("Add another address")
+    fill_in('address[street_address]', :with => '2000 Spring Garden St.')
+    fill_in('address[unit]', :with => '100')
+    click_button('Create Address')
+    expect(page).to have_content('2000 Spring Garden St.')
+  end
 
 end
