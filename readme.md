@@ -13,6 +13,7 @@ Users can sign up for an account, add an address, and track 311 service requests
 * Show service requests on a map
 * Allow users to click on a map and see service requests near that address 
 * Notify users via email or SMS when one of their tracked service requests is closed
+* Make site responsive on tablets and mobile
 
 ### Contribute 
 
