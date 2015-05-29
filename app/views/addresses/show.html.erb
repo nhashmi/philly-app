@@ -1,15 +1,15 @@
 <div id="js-parallax-window" class="parallax-window">
   <div class="parallax-static-content">
     <h1>
-      <%= "#{@address.street_address}" %> 
+      <%= "#{@address.street_address}" %>
       <% if @address.unit != "" %>
         <%=", Unit #{@address.unit}" %>
-      <% end %> 
+      <% end %>
     </h1>
   </div>
   <div id="js-parallax-background" class="parallax-background"></div>
 </div>
-<div class="housing-data" data-streetAddress="<%= @address.street_address.chomp(".") %>" data-unit="<%=@address.unit %>" data-latitude=<%= @address.latitude %> data-longitude=<%= @address.longitude %>></div> 
+<div class="housing-data" data-address="<%= @address.to_JSON %>"></div> 
 <div class="show-container">
   <h2>Recent 311 calls in your neighborhood</h2>
   <div class="open311-data">
@@ -17,8 +17,8 @@
   <div class="address-tools">
     <ul class="list-centered">
       <li><%= link_to "Edit address", edit_user_address_path( current_user, @address)%></li>
-      <li><%= link_to "Delete address", user_address_path( current_user, @address), method: :delete %></li>  
+      <li><%= link_to "Delete address", user_address_path( current_user, @address), method: :delete %></li>
     </ul>
     <h3><%= link_to "View my tracked requests", user_requests_path( current_user )%></h3>
-  </div>  
+  </div>
 </div>

@@ -1,3 +1,5 @@
+
+
 var AddressView = function(addressModel){
   this.housingData = document.querySelector(".housing-data");
   this.open311Data = document.querySelector(".open311-data");
@@ -7,6 +9,25 @@ var AddressView = function(addressModel){
 
 
 AddressView.prototype = {
+  withinRadius: function(request, radius) {
+      return request.lat < (latitude + radius) &&
+             request.lat > (latitude - radius) &&
+             request.lon < (longitude + radius) &&
+             request.lon > (longitude - radius))
+  },
+
+  addCard: function() {
+    // Add info to card
+    $(this.open311Data).append('<div class="card card' + requestsRendered + '"></div>');
+    // Default image
+    if (this.model.serviceRequests[i].image_thumbnail === "") {this.model.serviceRequests[i].image_thumbnail = "https://s169923.gridserver.com/images/whiteplanks.jpg"};
+    // Add image and status ribbon
+    $(".card" + requestsRendered).append('<div class="card-image"><div class="ribbon-box"><img src="' + this.model.serviceRequests[i].image_thumbnail + '" alt="Photo of service request (if it exists). Wood photo courtesy of Jay Mantri."><div class="ribbon-wrapper"><div class="ribbon">' + this.model.serviceRequests[i].status + '</div></div></div></div>');
+    // Change color of ribbon based on service request status
+    if (this.model.serviceRequests[i].status === "in progress") {$(".ribbon").last().css("background-color", "#FACF08")};
+    if (this.model.serviceRequests[i].status === "completed") {$(".ribbon").last().css("background-color", "#009E60")};
+
+  }
 
   render: function(){
     // Delete any existing cards (resolves a bug that was causing
@@ -27,25 +48,15 @@ AddressView.prototype = {
       // thing for readability purposes.
       // In other words, each section of code here is nice and clean, but as
       // a whole, it gets quite messy and hard to read, just because of size.
-      if (this.model.serviceRequests[i].lat < (latitude + searchRadius) &&
-          this.model.serviceRequests[i].lat > (latitude - searchRadius) &&
-          this.model.serviceRequests[i].lon < (longitude + searchRadius) &&
-          this.model.serviceRequests[i].lon > (longitude - searchRadius)) {
+      if (this.withinRadius(this.mode.serviceRequest[i], searchRadius)) {
 
           var unix_timestamp = this.model.serviceRequests[i].date_created
           var dateCreated = new Date(unix_timestamp * 1000); // convert unix timestamp
           var dateString = moment(dateCreated).calendar() // format date
 
-         // Add info to card
-          $(this.open311Data).append('<div class="card card' + requestsRendered + '"></div>');
-          // Default image
-          if (this.model.serviceRequests[i].image_thumbnail === "") {this.model.serviceRequests[i].image_thumbnail = "https://s169923.gridserver.com/images/whiteplanks.jpg"};
-          // Add image and status ribbon
-          $(".card" + requestsRendered).append('<div class="card-image"><div class="ribbon-box"><img src="' + this.model.serviceRequests[i].image_thumbnail + '" alt="Photo of service request (if it exists). Wood photo courtesy of Jay Mantri."><div class="ribbon-wrapper"><div class="ribbon">' + this.model.serviceRequests[i].status + '</div></div></div></div>');
-          // Change color of ribbon based on service request status
-          if (this.model.serviceRequests[i].status === "in progress") {$(".ribbon").last().css("background-color", "#FACF08")};
-          if (this.model.serviceRequests[i].status === "completed") {$(".ribbon").last().css("background-color", "#009E60")};
+          addCard(this.model.serviceRequests[i], );
 
+          
           // Format address to output in service request card
           // Remove superfluous "Philadelphia, PA [zipcode], USA"
           var longAddress = this.model.serviceRequests[i].address;

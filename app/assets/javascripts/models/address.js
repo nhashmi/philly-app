@@ -17,8 +17,17 @@ var Address = function() {
 Address.prototype = {
 
   getPropertyData: function(callback) {
-    var streetAddress = $('.housing-data').data('streetaddress');
-    var unit = $('.housing-data').data('unit');
+    // var streetAddress = $('.housing-data').data('streetaddress');
+    // var unit = $('.housing-data').data('unit');
+    $.ajax({
+      type: 'GET',
+      dataType: 'json',
+      // great job using encodeURIComponent!
+      url: "/users/current_address"
+    }).done(function(response) {
+      var address = response.address;
+    });
+
     $.ajax({
       type: 'GET',
       dataType: 'json',
