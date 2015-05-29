@@ -4,6 +4,8 @@ ready = function() {
     addressView = new AddressView(addressModel);
 
     // Call Refills parallax component
+    // I'm confused, is this a refills function? Or did you write the function
+    // below?
     if ($("#js-parallax-window").length) {
       parallax();
     }
