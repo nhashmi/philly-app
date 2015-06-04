@@ -1,6 +1,6 @@
 # Philly 311 Monitor
 
-[philly311.monitor.com](http://philly311.monitor.com)
+[philly311monitor.com](http://philly311monitor.com)
 
 This app uses Philadelphia's 311 API to give users information about what is going on in their neighborhoods.
 
