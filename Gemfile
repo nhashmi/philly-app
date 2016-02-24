@@ -1,3 +1,4 @@
+ruby '2.2.4'
 source 'https://rubygems.org'
 
 # Use geocoder for address latitude and longitude
