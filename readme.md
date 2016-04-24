@@ -1,6 +1,4 @@
-# Philly 311 Monitor
-
-[philly311monitor.com](philly311monitor.herokuapp.com)
+# Philly 311 Monitor (philly311monitor.herokuapp.com)
 
 This app uses Philadelphia's 311 API to give users information about what is going on in their neighborhoods. I built it as a way to learn Rails and to get to know a bit more about Philadelphia.
 
