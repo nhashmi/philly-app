@@ -1,11 +1,12 @@
 # Philly 311 Monitor
 
-[philly311monitor.com](http://philly311monitor.com)
+[philly311monitor.com](philly311monitor.herokuapp.com)
 
-This app uses Philadelphia's 311 API to give users information about what is going on in their neighborhoods.
+This app uses Philadelphia's 311 API to give users information about what is going on in their neighborhoods. I built it as a way to learn Rails and to get to know a bit more about Philadelphia.
+
+Please note that since the time I built the application in the spring of 2015 and the present day, the external API this application runs on has gotten much slower. But I hope this app can be used as an example for how one might track 311 requests or other types of local government requests despite its less than ideal functionality.
 
 Users can sign up for an account, add an address, and track 311 service requests that have been made in their neighborhood.
-
 
 ### Next steps
 
