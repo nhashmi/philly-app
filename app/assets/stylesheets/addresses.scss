@@ -2,13 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// Great job using SASS, but I'd try to break this stylesheet down into
+// component parts (general, cards, requests, addresses, etc) for readability
+// purposes.
 
-// Theme colors 
+// Theme colors
 $phillies-red: #CA1F2C;
 $phillies-blue: #226AA9;
 $phl-flag-yellow: #FACF08;
 
-// Fonts 
+// Fonts
 $header-font-stack: 'Archivo Black', sans-serif;
 $main-font-stack: 'Droid Sans', sans-serif;
 
@@ -69,10 +72,10 @@ $parallax-background-height: $parallax-window-height * 2;
     font-size: 5em;
     margin: 0;
     background-color: rgba(239, 0, 0, 0.75);
-    font-family: $header-font-stack 
+    font-family: $header-font-stack
   }
 
-  
+
 }
 
 .parallax-static-content {
@@ -108,11 +111,11 @@ h2{
 //   Hero image on show page
 // ****************************
 
-.hero {  
+.hero {
   $base-border-radius: 3px !default;
   $action-color: #115AAC !default;
   $large-screen: em(860) !default;
-  $hero-background-top: #000; 
+  $hero-background-top: #000;
   $hero-background-bottom: #000;
   $hero-color: white;
   font-size: 1.5em;
@@ -179,7 +182,7 @@ h2{
 
     .hero-copy {
       text-align: center;
-      
+
       h1 {
         font-size: 4em;
         margin-bottom: 0.5em;
@@ -198,7 +201,7 @@ h2{
       p {
         font-weight: 200;
         line-height: 1.4em;
-        margin: 0 auto 3em auto; 
+        margin: 0 auto 3em auto;
 
         @include media($large-screen) {
           font-size: 1.1em;
@@ -215,7 +218,7 @@ h2{
 }
 
 // *************************
-//   Service request cards 
+//   Service request cards
 // *************************
 
 .open311-data {
@@ -301,15 +304,15 @@ h2{
     }
 
   }
-  
+
   &:focus,
   &:hover {
     background-color: $card-hover-background;
-    
+
     .card-image img {
       background: $card-image-hover-background;
     }
-  
+
     .card-header {
       background-color: $card-hover-background;
     }
@@ -465,7 +468,7 @@ button{
 footer {
 
   font-size: 1em;
-  color: #fff; 
+  color: #fff;
   text-align: right;
   padding: 0.5em 1.5em 0.5em 0;
   background: darken($phillies-blue, 10%);
@@ -473,7 +476,7 @@ footer {
   bottom: 0;
   width: 100%;
 
-  a, 
+  a,
   a:visited {
     text-decoration: none;
     color: #fff;
@@ -491,7 +494,7 @@ footer {
 
 
 .request-container {
-  background: url("flickr_user_fordan_skyline.jpg") no-repeat center center fixed; 
+  background: url("flickr_user_fordan_skyline.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -502,7 +505,7 @@ footer {
   ul {
     list-style: none;
     padding-left: 0;
-  } 
+  }
 
   li {
       font-size: 1.5em;
@@ -597,7 +600,7 @@ footer {
     font-size: 3em;
     color: #fdfdfd;
   }
-  
+
   ul {
     list-style-type: none;
     padding-left: 0;
@@ -617,7 +620,7 @@ footer {
 
 }
 
-// New address button 
+// New address button
 #new-address {
   @include button(flat, $phillies-red);
   padding: 0.7em 1em;
@@ -649,7 +652,7 @@ footer {
 
   img {
     border: 8px solid #fff;
-    border-radius: 5px; 
+    border-radius: 5px;
   }
 
 }
@@ -699,7 +702,7 @@ footer {
   padding-left: 1em;
 }
 
-// Contact page 
+// Contact page
 
 .contact {
 
@@ -749,7 +752,7 @@ footer {
     padding: 0.7em 1em;
     margin: 1em;
     background-color: lighten($phillies-red, 20%);
-  }  
+  }
 
   p a,
   p a:visited {
@@ -759,7 +762,7 @@ footer {
 
   .photo-credits a,
   .photo-credits a:visited {
-   color: #fff; 
+   color: #fff;
   }
 
   .photo-credits a:hover {
@@ -773,4 +776,3 @@ footer {
   @include background(linear-gradient($phillies-blue, lighten($phillies-blue, 20%)) left no-repeat);
   padding-bottom: 2em;
 }
-

@@ -1,24 +1,37 @@
+// this code is really well-written for pure OO JS.
+// It's a perfect candidate for porting to backbone.js, which would
+// help you avoid using global variables!
 var Address = function() {
   this.propertyId;
-  // Addresses show 
+  // Addresses show
   if (window.location.pathname.includes('addresses')){
     this.getPropertyData();
     this.getOpen311();
   }
   // Request pages
   if (window.location.pathname.includes('requests')){
-    this.getServiceRequest();  
+    this.getServiceRequest();
   }
 }
 
 Address.prototype = {
 
   getPropertyData: function(callback) {
-    var streetAddress = $('.housing-data').data('streetaddress');
-    var unit = $('.housing-data').data('unit');
+    // var streetAddress = $('.housing-data').data('streetaddress');
+    // var unit = $('.housing-data').data('unit');
     $.ajax({
       type: 'GET',
       dataType: 'json',
+      // great job using encodeURIComponent!
+      url: "/users/current_address"
+    }).done(function(response) {
+      var address = response.address;
+    });
+
+    $.ajax({
+      type: 'GET',
+      dataType: 'json',
+      // great job using encodeURIComponent!
       url: "https://api.phila.gov/opa/v1.1/address/" + encodeURIComponent(streetAddress) + "/" + encodeURIComponent(unit) + "?format=json"
     }).done(function(response) {
       addressModel.loadPropertyData(response);
@@ -37,8 +50,8 @@ Address.prototype = {
       type: 'GET',
       dataType: 'json',
       // The API is supposed to support latitude and longtitude parameters,
-      // but as of May 15, 2015 it returns the same results regardless of 
-      // coordinates and search radius entered. 
+      // but as of May 15, 2015 it returns the same results regardless of
+      // coordinates and search radius entered.
       url : "https://www.publicstuff.com/api/2.0/requests_list?client_id=242&client_requests=1&limit=400"
     }).done(function(response) {
       addressModel.load311Data(response);
@@ -46,7 +59,7 @@ Address.prototype = {
     }).fail(function(response) {
       addressView.renderFailure();
     })
-  }, 
+  },
 
   load311Data: function(response) {
     this.serviceRequests = [];
@@ -60,6 +73,9 @@ Address.prototype = {
   getServiceRequest: function(callback) {
     // Fetch the service request ID from each card
     // and get more information about each request
+
+    // you could avoid using the regex here by using HTML 'data' properties
+    // on the 'specific-request' class, set in your ERB views.
     var requestClasses = $(".specific-request")
     requestClass = $(requestClasses)[0].classList[1]
     regexpId = /[0-9]+/;
@@ -67,14 +83,14 @@ Address.prototype = {
     $.ajax({
       type: 'GET',
       dataType: 'json',
-      url: "https://www.publicstuff.com/api/2.0/request_view?return_type=json&request_id=" + requestId 
+      url: "https://www.publicstuff.com/api/2.0/request_view?return_type=json&request_id=" + requestId
     }).done(function(response) {
       addressModel.loadServiceRequest(response);
       addressView.renderServiceRequest();
     }).fail(function(response) {
       addressView.renderServiceRequestFailure();
     })
-  }, 
+  },
 
   loadServiceRequest: function(response) {
     this.specificRequest = response.response

@@ -13,7 +13,8 @@ class RequestsController < ApplicationController
   def new
     @request = current_user.requests.new
     respond_to do |format|
-      format.html 
+      format.html
+      # is a JSON response to a #new action required? I've never seen this before
       format.json {render json: @request}
     end
   end
@@ -21,6 +22,8 @@ class RequestsController < ApplicationController
   def create
     @request = current_user.requests.new(request_params)
     @request.save
+    # if you have an HTML response for `new`, you should probably use a
+    # respond_to to handle HTML / AJAX create separately as well.
     # Allow create from AJAX post request and don't refresh page
     render :nothing => true, :status => 200, :content_type => 'text/html'
   end

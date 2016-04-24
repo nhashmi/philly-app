@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
     protected
 
+    # I like this technique!
     def layout_by_resource
       if devise_controller?
         "devise_layout"
